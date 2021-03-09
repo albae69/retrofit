@@ -25,7 +25,7 @@ class MainActivity : AppCompatActivity() {
 
         button.setOnClickListener {
             val number = etNumber.text.toString()
-            viewModel.getCustomPost(Integer.parseInt(number))
+            viewModel.getCustomPost(Integer.parseInt(number), "id", "desc")
             viewModel.myCustomPosts.observe(this, Observer { response ->
                 if (response.isSuccessful) {
                     tvMessage.text = response.body().toString()
