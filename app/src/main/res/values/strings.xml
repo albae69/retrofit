@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">retrofit</string>
+    <string name="title">Title</string>
+    <string name="id">Id</string>
+    <string name="user_id">User Id</string>
+    <string name="body">Body</string>
 </resources>
