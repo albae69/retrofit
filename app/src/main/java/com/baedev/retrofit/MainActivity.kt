@@ -22,17 +22,20 @@ class MainActivity : AppCompatActivity() {
         val repository = Repository()
         val viewModelFactory = MainViewModelFactory(repository)
         viewModel = ViewModelProvider(this, viewModelFactory).get(MainViewModel::class.java)
-        viewModel.getPost()
-        viewModel.myResponse.observe(this, Observer { response ->
-            if (response.isSuccessful) {
-                Log.d(TAG, response.body()?.userId.toString())
-                Log.d(TAG, response.body()?.id.toString())
-                tvMessage.text = response.body()?.title
-                Log.d(TAG, response.body()?.body!!)
-            } else {
-                Log.d(TAG, "error response ${response.errorBody().toString()}")
-                tvMessage.text = response.code().toString()
-            }
-        })
+
+        button.setOnClickListener {
+            val number = etNumber.text.toString()
+            viewModel.getPost2(Integer.parseInt(number))
+            viewModel.myResponse2.observe(this, Observer { response ->
+                if (response.isSuccessful) {
+                    tvMessage.text = response.body().toString()
+                } else {
+                    tvMessage.text = response.code().toString()
+
+                }
+
+            })
+        }
+
     }
 }
